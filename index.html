@@ -41,11 +41,15 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Name</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input type="email" class="form-control" id="inputName" placeholder="Name">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Company name</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input type="email" class="form-control" id="inputCompany" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Phone Number</label>
+                <input type="email" class="form-control" id="inputPhone" placeholder="Phone #">
             </div>
         </div>
         <div class="form-group">
@@ -63,9 +67,9 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control statesInput">
                     <option selected>Choose...</option>
-                    <option>...</option>
+                    <option class="defaultCity">...</option>
                 </select>
             </div>
             <div class="form-group col-md-2">
@@ -73,7 +77,8 @@
                 <input type="text" class="form-control" id="inputZip">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Save Data</button>
+        <button type="submit" class="btn btn-primary regCustomer">Register Customer</button>
+        <button type="submit" class="btn btn-warning clearData">Clear Data</button>
     </form>
 </div>
 <!-- Customer input form end -->
@@ -153,6 +158,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
+    <script src="states.js"></script>
 <script src="app.js"></script>
 
 

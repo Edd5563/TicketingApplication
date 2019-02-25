@@ -3,8 +3,6 @@ $(document).ready(function () {
     $('.incomingCall').hide();// hiding content for now
     $('.customerForm').hide();// hiding content for now
 
-
-
     $(".clientBtn").click(function () {
         
         $('.incomingCall').hide();
@@ -17,20 +15,28 @@ $(document).ready(function () {
         $('.incomingCall').show();
     });
  
+    $(".regCustomer").click(function () { 
+        event.preventDefault(); 
+        alert('Register Customer: Error 01Xb1773... This button is not yet connected to be able to register customer information');
+        console.log('Register Customer: Error 01Xb1773... This button is not yet connected to be able to register customer information'); 
+    });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
+// clear the fields in customer registration
+// Server side functionality is not yet Implemented
+    $(".clearData").click(function () { 
+        event.preventDefault();
+        $("#inputName").val('');
+        $("#inputCompany").val('');
+        $("#inputPhone").val('');
+        $("#inputAddress").val('');
+        $("#inputAddress2").val('');
+        $("#inputCity").val('');
+        $(".statesInput").val('');
+        $(".defaultCity").val('');
+        $("#inputZip").val('');
+    });
 
 
 
@@ -46,6 +52,27 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Would like to implement a server side companion app for this to let information be stored in a data server
 
 
 
