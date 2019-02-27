@@ -155,7 +155,7 @@ $(document).ready(function () {
                 }
             } 
         }
-        xhr.open('GET', "../customerData.json");
+        xhr.open('GET', "../data/customerData.json");
         xhr.send();
 
 
