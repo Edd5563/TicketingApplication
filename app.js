@@ -27,6 +27,47 @@ $(document).ready(function () {
 
 
 
+    $("#editBtn").click(function () {
+        
+        
+        $("#inputName").remove();
+        $("#inputCompany").remove();
+        $("#inputPhone").remove();
+        $("#inputAddress").remove();
+        $("#inputAddress2").remove();
+        $("#inputCity").remove();
+        $(".statesInput").remove();
+        $(".defaultCity").remove();
+        $("#inputZip").remove();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // $("#inputName").val('');
+        // $("#inputCompany").val('');
+        // $("#inputPhone").val('');
+        // $("#inputAddress").val('');
+        // $("#inputAddress2").val('');
+        // $("#inputCity").val('');
+        // $(".statesInput").val('');
+        // $(".defaultCity").val('');
+        // $("#inputZip").val('');
+    });
+
+
+
+
+
+
+
+
+
+
 //--------------------------------clear the fields in customer registration
     $(".clearData").click(function () { 
         event.preventDefault();
@@ -78,9 +119,6 @@ $(document).ready(function () {
     });
 
 
-  $("#deleteBtn").click(function () {
-        //$(this).closest(".customerData").remove();
-    });
 
 
 
@@ -107,7 +145,6 @@ $(document).ready(function () {
                                 <p class="card-text">${customers[i].phoneNumber}</p>
                                 <p class="card-text">${customers[i].city}, ${customers[i].state}</p>
                                 <p class="card-text">${customers[i].zip}</p>
-                                
                             </div>
                         </div>
                         <br>`;
