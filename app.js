@@ -10,21 +10,24 @@ $(document).ready(function () {
     });
     
     $(".messageBtn").click(function () { 
-        
         $('.customerForm').hide();
         $('.incomingCall').show();
     });
  
     $(".regCustomer").click(function () { 
         event.preventDefault(); 
-        alert('Register Customer: Error 01Xb1773... This button is not yet connected to be able to register customer information');
-        console.log('Register Customer: Error 01Xb1773... This button is not yet connected to be able to register customer information'); 
+        alert("Hello World!");
+        //this section is for customer registration
     });
 
+    //function that deleted dynamically created customerData from json to html
+    function deleteData() {
+        $(this).closest(".customerData").remove();
+    }
 
-    
-// clear the fields in customer registration
-// Server side functionality is not yet Implemented
+
+
+//--------------------------------clear the fields in customer registration
     $(".clearData").click(function () { 
         event.preventDefault();
         $("#inputName").val('');
@@ -39,7 +42,15 @@ $(document).ready(function () {
     });
 
 
-//------------------------------------------------------
+
+
+
+
+
+
+
+
+//------------------------------------------------------ weatherAPI
     function getWeather() {
         var apiKey = 'd2b1261b901d14b915dc95d807622fc2'
         var zip = $('#zipInput').val();
@@ -50,29 +61,44 @@ $(document).ready(function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     var weather = JSON.parse(xhr.responseText)
+                    console.log(weather);
                 } else {
-                    alert(xhr.statusText);
+                    alert('Error:'+xhr.statusText);
                 }
             }
         }
         xhr.open('GET', "url");
         xhr.send();
     }
-//------------------------------------------------------
+
+    $(".zipBtn").click(function () {
+        event.preventDefault();
+        //getWeather();
+        alert('At this moment, This buttomn is not progreammed to search for your weather. Sorry');
+    });
 
 
+  $("#deleteBtn").click(function () {
+        //$(this).closest(".customerData").remove();
+    });
+
+
+
+
+
+//------------------------------------------------------ API call to my json file with customer info
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     var customers = JSON.parse(xhr.responseText);
-                    
-                    //console.log(customers)
                     for (let i = 0; i < customers.length; i++) {
-                        
-                        
                         var customerHTML = `
-                        <div class="card" style="width: 15rem;">
+                        <div class="card item${i}" id="customerData" style="width: 15rem;">
+                            <div class="card-body">
+                                <input type="button" onclick="$(this).closest('#customerData').remove()" class="btn btn-danger" value="Delete">
+                                <input type="button" id="editBtn" class="btn btn-info" value="Edit">
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">${customers[i].fullName}</h5>
                                 <p class="card-text">${customers[i].address}</p>
@@ -81,14 +107,12 @@ $(document).ready(function () {
                                 <p class="card-text">${customers[i].phoneNumber}</p>
                                 <p class="card-text">${customers[i].city}, ${customers[i].state}</p>
                                 <p class="card-text">${customers[i].zip}</p>
+                                
                             </div>
                         </div>
                         <br>`;
                         $(".customerInfo").append(customerHTML);
                     }
-
-
-
                 } else {
                     alert(xhr.statusText);
                 }
@@ -98,46 +122,9 @@ $(document).ready(function () {
         xhr.send();
 
 
-
-
-    //     //Attempt2
-    function getWeather() {
-        var apiKey = 'd2b1261b901d14b915dc95d807622fc2'
-        var zip = $('#zipInput').val();
-        var url = `https://samples.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKey}`
-        console.log(url);
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var weather = JSON.parse(xhr.responseText)
-                } else {
-                    alert(xhr.statusText);
-                }
-            } 
-        }
-        xhr.open('GET', "url");
-        xhr.send();
-
-    }
  
 
-
-
-   $(".zipBtn").click(function () {
-        event.preventDefault();
-        getWeather();
-    });
-
-
-
-
-
-
-
-
-
+    
 
 }); //document.ready close
 
@@ -152,56 +139,12 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Future ideas for later implementation
 
 // Would like to implement a server side companion app for this to let information be stored in a data server
 
-
-
-
-
-
-
-
-//for later implementation
-
 //------------------- ^ ||Seperation barrier|| v ---------------------    
-// Ajax call to weather api to grab local weather form form adn display.
-//May need a node server to make work
 
 
-   // $(".zipBtn").click(function () {
-    //     event.preventDefault();
-
-
-    //     var apiKey = 'd2b1261b901d14b915dc95d807622fc2'
-    //     var zip = $('#zipInput').val();
-    //     var url = `https://samples.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKey}`
-
-
-
-
-    //     //Attempt1
-    //     $.get(url, function(data) {
-    //         console.log(data)
-    //     });
-
-
-
-
-
-    // });
-//------------------- ^ ||Seperation barrier|| v ---------------------    
 
 //end of ideas
