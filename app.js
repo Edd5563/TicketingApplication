@@ -8,7 +8,16 @@ app.use('/assets', express.static('assets'));
 
 
 app.get('/', function(req, res) {
-    app.render('index');
+    res.render('index');
+});
+
+
+app.get('/customerReg', function (req, res) {
+    res.render('customerReg');
+});
+
+app.get('/ticketForm', function (req, res) {
+    res.render('ticketForm');
 });
 
 
