@@ -14,11 +14,61 @@
 
 <body>
 
-    <nav></nav>
+     <% include partials/navbar.ejs %>
     <div class="wrapper">
-        <% include partials/navbar.ejs %>
-        <div class="container text-center">
-         Registration form
+       
+    <div class="container text-center">
+
+        <h3></h3>
+
+    <div>
+        <form method="POST" action="customerReg">
+            <label for="fname"> First Name</label>
+            <input type="text" name="fName">
+
+            <label for="lname"> Last Name</label>
+            <input type="text" name="lName">
+
+            <label for="company"> Company Name</label>
+            <input type="text" name="company">
+
+            <label for="address"> Address</label>
+            <input type="text" name="address">
+
+            <label for="addressTwo"> Address 2</label>
+            <input type="text" name="addressTwo">
+
+            <label for="telephone"> Telephone</label>
+            <input type="text" name="telephone">
+
+            <label for="email"> E-mail</label>
+            <input type="text" name="email">
+
+            <label for="city"> City</label>
+            <input type="text" name="city">
+
+            <label for="state"> State</label>
+            <input type="text" name="state">
+
+            <label for="zip"> Zipcode</label>
+            <input type="text" name="zip">
+
+            <input type="Submit" value="Sumbit">
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div><!-- End of Container -->
+
     <footer class="text-center footer">
         <hr>
         End of Page

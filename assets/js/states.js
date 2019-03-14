@@ -51,13 +51,10 @@ let states = [
     'WY'	
 ];
 
-for (let i = 0; i < states.length; i++) {
-    var statesHTML = '<option>'+states[i]+'</option>';
-    $('.statesInput').append(statesHTML);
-}
 
 
 
+module.exports= states;
 
 //<option selected>Choose...</option>
 
