@@ -20,7 +20,7 @@ $(document).ready(function () {
         //this section is for customer registration
     });
 
-
+    $('input#input_text, textarea#textarea2').characterCounter();
 
     //$("#editBtn").click(function () {  });
 
