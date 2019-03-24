@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      
+    
+    <title>Call Tracker</title>
+</head>
+<body>
+    
+    <% include partials/navbar.ejs %>
+        <div class="wrapper">
+        
+            <div class="container text-center">
+                <br><br><br><br><br><br>
+
+
+        <form>
+            <p>To who:</p>
+            <select name="FOR" class="toWhom">
+                <option value="n/a">...</option>
+                <option value="Edwin">Edwin</option>
+                <option value="Sandra">Sandra</option>
+                <option value="Janice">Janice</option>
+                <option value="Gypsi">Gypsi</option>
+                <option value="Junior">Junior</option>
+                <option value="Anyone">Anyone</option>
+            </select>
+            <br>
+            <br>
+        
+        
+            <div class="row">
+                <div class="col">
+                    <p> Caller name:</p>
+                    <input class="callerName" type="text" name="CALLER"><br>
+                </div>
+        
+                <div class="col">
+                    <p>Company name:</p>
+                    <input class="of" type="text" name="OF"><br>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <p>Call back number:</p>
+                    <input class="phone" type="text" name="PHONE"><br>
+                </div>
+                <div class="col">
+                    <p>Or Email</p>
+                    <input class="email" type="email" name="EMAIL"><br>
+                </div>
+            </div>
+        
+            <br><br>
+            <textarea class="message " type="text" name="MESSAGE" placeholder="Message" style="width:100%;"></textarea><br>
+            <br>
+        
+        
+            <div class="row ">
+                <div class="col">
+                    <select name="intent" class="intent">
+                        <option value="Telephone">Telephoned</option>
+                        <option value="Returned Call">Returned Your Call</option>
+                        <option value="Please Call">Please Call</option>
+                        <option value="Will Call Again">Will Call Again</option>
+                        <option value="Came to sse you">Came To See You</option>
+                        <option value="Wants to see you">Wants To See You</option>
+                    </select>
+                </div>
+  
+            </div>
+        
+        
+        
+        
+            <br><br>
+        
+        
+            <br><br>
+            <input type="button" value="Submit" class="btn btn-primary submitBtn">
+            <input type="button" value="Clear Fields" class="btn btn-secondary clearBtn">
+            <br><br><br>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>  <!-- End of Wrapper -->
+
+        <br><br><br><br><br><br>
+    <footer class="text-center footer">
+        <hr>
+        End of Page
+    </footer>
+
+</body>
+</html>

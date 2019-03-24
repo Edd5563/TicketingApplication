@@ -54,6 +54,8 @@ app.post('/login', urlencodedParser, function (req, res) {
     //console.log(users)
     if (users.userName === "username" && users.password === "passeord") {
         res.render('customerReg', { states: states });
+        
+        console.log(req.url)
     } else {
         alert('Incorrect username or password')
     }
