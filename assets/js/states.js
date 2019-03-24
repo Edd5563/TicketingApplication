@@ -54,18 +54,4 @@ let states = [
 
 
 
-module.exports= states;
-
-//<option selected>Choose...</option>
-
-/*Commonwealth/Territory:	Abbreviation:
-American Samoa	AS
-District of Columbia	DC
-Federated States of Micronesia	FM
-Guam	GU
-Marshall Islands	MH
-Northern Mariana Islands	MP
-Palau	PW
-Puerto Rico	PR
-Virgin Islands	VI
-*/
+module.exports = states;

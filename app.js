@@ -34,24 +34,33 @@ mongoose.connection.once('once', function () {
 });
 
 
-
-
-
-
-
-app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
+app.set('view engine', 'ejs');
 
 
-
-
-
-
-
-app.get('/', function(req, res) {
+app.get('/index', function(req, res) {
     res.render('index');
 });
+
+
+//------------------------
+app.get('/', function (req, res) {
+    res.render('login');
+});
+
+app.post('/login', urlencodedParser, function (req, res) {
+    var users = new userGroups(req.body)
+    //console.log(users)
+    if (users.userName === "username" && users.password === "passeord") {
+        res.render('customerReg', { states: states });
+    } else {
+        alert('Incorrect username or password')
+    }
+});
+//------------------------
+
+
 
 app.get('/ticketForm', function (req, res) {
     res.render('ticketForm');
@@ -68,29 +77,20 @@ app.get('/customerReg', function (req, res) {
 
 app.post('/customerReg', urlencodedParser, function(req, res) {
     var customer = new custRegs(req.body)
-    customer.save();
+    console.log(customer)
+    res.render('customerReg', { states: states });
+    // customer.save();
 });
 //------------------------
 
 
 
 
-//------------------------
-app.get('/login', function (req, res) {
-    res.render('login');
-});
-
-app.post('/login', urlencodedParser, function (req, res) {
-    var users = new userGroups(req.body)
-    console.log(users)
-    // this area will compare username password to db info and if 
-    //success take you to the next page.
-});
-//------------------------
 
 
+const port = process.env.port || 3000
+app.listen(port, function(){
+    console.log('Now listening on port ' + port);
+})
 
-const port = 3000
-app.listen(port)
-console.log('Now listening on port '+port);
 

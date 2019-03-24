@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RegCustomerSchema = new Schema({
+	bpid: Number,
 	fName: String,
 	lName: String,
 	telephone: String,
