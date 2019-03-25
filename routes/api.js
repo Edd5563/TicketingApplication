@@ -5,7 +5,8 @@ let bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const custRegs = require('../models/regCustomers')
 const userGroups = require('../models/users')
-const saveMessage = require('../models/messages')
+const messages = require('../models/messages')
+
 let states = require('../assets/js/states');
 
 
@@ -67,9 +68,9 @@ router.get('/messages', function (req, res) {
 
 
 router.post('/messages', urlencodedParser, function (req, res) {
-    let custMessage = new saveMessage(req.body)
+    let custMessage = new messages(req.body)
     console.log(custMessage)
-    res.render('messages', {data: custMessage})
+    res.render('messages');
     
 });
 
