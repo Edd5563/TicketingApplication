@@ -10,8 +10,6 @@ const messages = require('../models/messages')
 let states = require('../assets/js/states');
 
 
-
-
 //------------------------
 router.get('/', function (req, res) {
     res.render('login');
@@ -29,8 +27,6 @@ router.post('/login', urlencodedParser, function (req, res) {
     }
 });
 //------------------------
-
-
 
 
 
@@ -73,11 +69,6 @@ router.post('/messages', urlencodedParser, function (req, res) {
     res.render('messages');
     
 });
-
-
-
-
-
 
 
 
