@@ -19,17 +19,82 @@
         <br><br>
     <div class="container text-center">
             
-New Ticket view
 
+
+<label for="ticketNum">Ticket Creation</label>
    
-<div class="row">
-    <form action="POST" action="createTicket" class="col s12">
 
-        <input type="text" name="">
+    <form method="POST" action="ticketForm" class="col-md-6 offset-md-3">
+    
+        <div class="form-group ">
+            <input type="text" class="form-control" placeholder="BPID" name="bpid">
+        </div>
+        <br>
+
+
+        <div class="form-group ">
+            <input type="text" class="form-control" placeholder="Full Name" name="fullName">
+        </div>
+        <br>
+
+
+
+        <div class="form-group ">
+            <input type="text" class="form-control" placeholder="Company Name" name="companyName">
+        </div>
+        <br>
+
+
+        <div class="form-group ">
+            <input type="text" class="form-control" placeholder="1-888-555-1234 ect 125" name="telephone">
+        </div>
+        <br>
+
+
+        <div class="form-group ">
+            <input type="email" class="form-control" placeholder="JS@example.com" name="email">
+        </div>
+        
+        <br>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Generate ticket number" name="ticketNum">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Generate</button>
+            </div>
+        </div>
+        <br>
+
+        
+        <div >
+            <select class="custom-select" id="inputGroupSelect02" name="status">
+                <option selected>Status...</option>
+                <option value="1">Open</option>
+                <option value="2">Closed</option>
+            </select>
+        </div><br>
+        <br>
+
+        <div class="form-group ">
+            <input type="text" class="form-control" placeholder="Subject" name="subject">
+        </div>
+        <br>
+
+
+        <div class="form-group ">
+            <textarea class="form-control" name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
+        </div>
+
+
+
+
+
+
+
+        <button type="submit">Enter</button>
 
 
     </form>
-</div>
+
 
 
 
