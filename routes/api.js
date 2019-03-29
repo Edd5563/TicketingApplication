@@ -7,6 +7,7 @@ const custRegs = require('../models/regCustomers')
 const userGroups = require('../models/users')
 const messages = require('../models/messages')
 const tickets = require('../models/ticketing')
+const searchs = require('../models/search')
 
 let states = require('../assets/js/states');
 
@@ -20,7 +21,7 @@ router.post('/login', urlencodedParser, function (req, res) {
     var users = new userGroups(req.body)
     //console.log(users)
     if (users.userName === '1325' && users.password === "1234") {
-        res.render('customerReg', { states: states });
+        res.render('search');
 
         // console.log(req.url)
     } else {
@@ -92,6 +93,18 @@ router.post('/ticketForm', urlencodedParser, function (req, res) {
 
 
 
+
+
+
+
+router.get('/search', function(req,res) {
+    res.render('search')
+});
+
+router.post('/search', urlencodedParser, function (req, res) {
+    let search = new searchs(req.body);
+    console.log(search);
+});
 
 
 //------------------------
