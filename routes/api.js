@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
 router.post('/login', urlencodedParser, function (req, res) {
     var users = new userGroups(req.body)
     //console.log(users)
-    if (users.userName === '1325' && users.password === "1234") {
+    if (users.userName === 'username' && users.password === "passeord") {
         res.render('search');
 
         // console.log(req.url)
@@ -95,7 +95,7 @@ router.post('/ticketForm', urlencodedParser, function (req, res) {
 
 
 
-
+//------------------------Search feature is not set to find. Please rewrite
 
 router.get('/search', function(req,res) {
     res.render('search')
