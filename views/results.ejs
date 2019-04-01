@@ -21,18 +21,26 @@
 
 
 
-        <form method="POST" action="search">
+            <form method="POST" action="search">
+                <div class="form-group text-center">
+                    <input type="text" class="form-control"
+                        placeholder="Enter first name to search" name="search">
+                </div>
+                <button type="submit">Search...</button>
+            </form>
 
-        <div class="form-group text-center">
-            <input type="text" class="form-control" placeholder="Enter first name to search" name="search">
-        </div>
-
-        <button type="submit">Search...</button>
-        
-        </form>
-
-
-
+            <br><br><br><br><br>
+            <p><%= data.fName +" "+ data.lName%></p>
+            <p><%= data.company%></p>
+            <p><%= data.telephone%></p>
+            <p><%= data.email%></p>
+            <p><%= data.address%></p>
+            <p><%= data.addressTwo%></p>
+            <p><%= data.city%></p>
+            <p><%= data.state%></p>
+            <p><%= data.zip%></p>
+            
+            
 
 
 

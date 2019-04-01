@@ -11,6 +11,11 @@ let app = express();
 app.use('/api', require('./routes/api'));
 app.set('view engine', 'ejs');
 
+//Error handler
+app.use(function(err, req, res, next){
+    console.log(err.message);
+    res.status(422).send({error:err.message});
+});
 
 mongoose.Promise = global.Promise;
 

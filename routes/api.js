@@ -13,11 +13,11 @@ let states = require('../assets/js/states');
 
 
 //------------------------
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
     res.render('login');
 });
 
-router.post('/login', urlencodedParser, function (req, res) {
+router.post('/login', urlencodedParser, function (req, res, next) {
     var users = new userGroups(req.body)
     //console.log(users)
     if (users.userName === 'username' && users.password === "passeord") {
@@ -43,28 +43,28 @@ router.get('/customerReg', function (req, res) {
     // console.log(req.url)
 });
 
-router.post('/customerReg', urlencodedParser, function (req, res) {
+router.post('/customerReg', urlencodedParser, function (req, res, next) {
     let customer = new custRegs(req.body)
     console.log(customer)
     res.render('customerReg', { states: states });
-    // console.log(req.url)
-    // customer.save();
+    custRegs.create(req.body).then(function(customer){
+        res.send(customer)
+    }).catch(next);
 });
 
 //------------------------
 
 
-router.get('/messages', function (req, res) {
+router.get('/messages', function (req, res, next) {
     res.render('messages');
     // console.log(req.url)
 });
 
-
-router.post('/messages', urlencodedParser, function (req, res) {
+//needs a catch next
+router.post('/messages', urlencodedParser, function (req, res, next) {
     let custMessage = new messages(req.body)
     console.log(custMessage)
     res.render('messages');
-    
 });
 
 
@@ -84,7 +84,7 @@ router.get('/ticketForm', function (req, res) {
 
 
 
-router.post('/ticketForm', urlencodedParser, function (req, res) {
+router.post('/ticketForm', urlencodedParser, function (req, res, next) {
     let ticketSave = new tickets(req.body);
     console.log(ticketSave);
     res.render('ticketForm');
@@ -97,19 +97,35 @@ router.post('/ticketForm', urlencodedParser, function (req, res) {
 
 //------------------------Search feature is not set to find. Please rewrite
 
-router.get('/search', function(req,res) {
+router.get('/search', function (req, res, next) {
     res.render('search')
 });
 
-router.post('/search', urlencodedParser, function (req, res) {
-    let search = new searchs(req.body);
-    console.log(search);
+router.post('/search', urlencodedParser, function (req, res, next) {
+    let searchResults = new searchs(req.body);
+    console.log(searchResults.search);
+    custRegs.findOne({fName:searchResults.search}).then(function(results){
+        res.render('results',{data:results})
+    });
+        
+   
 });
 
 
 //------------------------
 
 
+router.get('/results', function (req, res, next) {
+    res.render('results')
+});
+
+router.post('/results', urlencodedParser, function (req, res, next) {
+    let searchResults = new searchs(req.body);
+    console.log(searchResults.search);
+    custRegs.findOne({ fName: searchResults.search }).then(function (results) {
+        res.render('results', { data: results })
+    });
+});
 
 
 
