@@ -12,3 +12,9 @@ Future changes:
 --clock in portion to help keep track of hours.
 maybe expand on the tracker to help calculate paychecks
 
+
+
+
+
+Content to cut:
+Messaging page.
