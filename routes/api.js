@@ -104,11 +104,20 @@ router.get('/search', function (req, res, next) {
 router.post('/search', urlencodedParser, function (req, res, next) {
     let searchResults = new searchs(req.body);
     console.log(searchResults.search);
-    custRegs.findOne({fName:searchResults.search}).then(function(results){
-        res.render('results',{data:results})
-    });
-        
+    
+    if (searchResults.search == null || searchResults.search == "") {
+        res.render('search');
+    } else {
+        custRegs.findOne({ fName: searchResults.search }).then(function (results) {
+            res.render('results', { data: results })
+        }).catch(next);
+    }
+
+    
+
+  
    
+
 });
 
 
@@ -121,8 +130,7 @@ router.get('/results', function (req, res, next) {
 
 router.post('/results', urlencodedParser, function (req, res, next) {
     let searchResults = new searchs(req.body);
-    console.log(searchResults.search);
-    custRegs.findOne({ fName: searchResults.search }).then(function (results) {
+        custRegs.findOne({ fName: searchResults.search }).then(function (results) {
         res.render('results', { data: results })
     });
 });
