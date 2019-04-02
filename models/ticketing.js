@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const ticketSchema = new Schema({
     bpid: String,
-    fullName: String,
+    firstName: String,
+    lastName: String,
     companyName: String,
     telephone: String,
     email: String,

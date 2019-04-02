@@ -5,7 +5,6 @@ let bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const custRegs = require('../models/regCustomers')
 const userGroups = require('../models/users')
-const messages = require('../models/messages')
 const tickets = require('../models/ticketing')
 const searchs = require('../models/search')
 
@@ -28,19 +27,12 @@ router.post('/login', urlencodedParser, function (req, res, next) {
         res.render('login');
     }
 });
-//------------------------
-
-
-
-
-
 
 //------------------------
-// passing states array to customerReg to avoind such 
+// passing states array to customerReg to avoid
 // making such a hude options list.
 router.get('/customerReg', function (req, res) {
     res.render('customerReg', { states: states });
-    // console.log(req.url)
 });
 
 router.post('/customerReg', urlencodedParser, function (req, res, next) {
@@ -52,48 +44,21 @@ router.post('/customerReg', urlencodedParser, function (req, res, next) {
     }).catch(next);
 });
 
-//------------------------
 
-
-router.get('/messages', function (req, res, next) {
-    res.render('messages');
-    // console.log(req.url)
-});
-
-//needs a catch next
-router.post('/messages', urlencodedParser, function (req, res, next) {
-    let custMessage = new messages(req.body)
-    console.log(custMessage)
-    res.render('messages');
-});
-
-
-
-
-//------------------------ticketForm
-
-
-
-
-
+//-----------ticketForm
 router.get('/ticketForm', function (req, res) {
     res.render('ticketForm');
-    // console.log(req.url)
+    // Marked for Deletion
 });
-
-
 
 
 router.post('/ticketForm', urlencodedParser, function (req, res, next) {
-    let ticketSave = new tickets(req.body);
-    console.log(ticketSave);
-    res.render('ticketForm');
+    tickets.create(req.body).then(function(ticketData){
+        res.render('search');// Future this will lead to Open ticket where this ticket will be displayed
+    });
+
+   
 });
-
-
-
-
-
 
 //------------------------Search feature is not set to find. Please rewrite
 
@@ -103,38 +68,22 @@ router.get('/search', function (req, res, next) {
 
 router.post('/search', urlencodedParser, function (req, res, next) {
     let searchResults = new searchs(req.body);
-    console.log(searchResults.search);
-    
-    if (searchResults.search == null || searchResults.search == "") {
-        res.render('search');
-    } else {
-        custRegs.findOne({ fName: searchResults.search }).then(function (results) {
+    // console.log(searchResults.search);
+    custRegs.findOne({ fName: searchResults.search }).then(function (results) {
+        if (results === null ){
+            res.render('search')
+        } else {
             res.render('results', { data: results })
-        }).catch(next);
-    }
-
-    
-
-  
-   
-
+        }
+    }).catch(next);
 });
 
 
-//------------------------
-
+//---------Results page
 
 router.get('/results', function (req, res, next) {
     res.render('results')
 });
-
-router.post('/results', urlencodedParser, function (req, res, next) {
-    let searchResults = new searchs(req.body);
-        custRegs.findOne({ fName: searchResults.search }).then(function (results) {
-        res.render('results', { data: results })
-    });
-});
-
 
 
 module.exports = router;

@@ -20,15 +20,6 @@ app.use(function(err, req, res, next){
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect('mongodb://localhost/customerDB', { useNewUrlParser: true })
-mongoose.connection.once('once', function () {
-    console.log('Connection has been Established')
-
-}).on('error', function (error) {
-    console.log('Connection error: ' + error)
-});
-
-
 mongoose.connect('mongodb://localhost/usersDB', { useNewUrlParser: true })
 mongoose.connection.once('once', function () {
     console.log('Connection has been Established')
@@ -38,13 +29,6 @@ mongoose.connection.once('once', function () {
 });
 
 
-mongoose.connect('mongodb://localhost/messagesDB', { useNewUrlParser: true })
-mongoose.connection.once('once', function () {
-    console.log('Connection has been Established')
-
-}).on('error', function (error) {
-    console.log('Connection error: ' + error)
-});
 
 
 

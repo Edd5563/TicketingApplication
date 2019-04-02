@@ -17,4 +17,10 @@ maybe expand on the tracker to help calculate paychecks
 
 
 Content to cut:
-Messaging page.
+Messaging page: Ticketing section can cover messaging.
+
+New Ticketing link and page for removal: Having found a way to add it to a modal it makes it 
+more user friendly to directly make a ticker from the search results page.
+
+results post call: made it to where its not needed
+
