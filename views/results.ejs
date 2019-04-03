@@ -30,6 +30,7 @@
             </form>
 
             <br><br><br>
+            
             <p><%= data.fName +" "+ data.lName%></p>
             <p><%= data.company%></p>
             <p><%= data.telephone%></p>
@@ -63,7 +64,7 @@
                         <div class="modal-body">
                             <form method="POST" action="ticketForm" class="">
                                 <div class="form-group ">
-                                    <input type="text" class="form-control" placeholder="BPID" name="bpid">
+                                    <input type="text" class="form-control" value="<%=tickNum.ticketNumber%>" name="ticketNum">
                                 </div>
                                 <br>
                                 <div class="form-group ">
@@ -109,17 +110,16 @@
                             
                             
                                 <div class="form-group ">
-                                    <textarea class="form-control" name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control " name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
                                 </div>
                             
-                                <button type="submit">Enter</button>
+                                <button class="btn btn-secondary" type="submit">Enter</button>
                             </form>
 
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <!-- Buttons here -->
                         </div>
                     </div>
                 </div>
