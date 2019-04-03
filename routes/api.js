@@ -91,11 +91,6 @@ router.post('/search', urlencodedParser, function (req, res, next) {
 
     }).catch(next);
 
-
-   
-
-
-    
 });
 
 
@@ -113,10 +108,12 @@ router.get('/searchTickets', function (req, res, next) {
     res.render('search-tickets')
 });
 
-router.post('/searchTickets', function (req, res, next) {
-    let ticketResults = req.body
-    console.log(ticketResults)
-    res.render('search-tickets')
+router.post('/searchTickets', urlencodedParser, function (req, res, next) {
+    let search_ticket_results = new tickets(req.body);
+    tickets.findOne({ ticketNum: search_ticket_results.ticketNum}).then(function(results) {
+        res.render('search-tickets-results', {ticketData: results})
+    }).catch(next);
+    
 });
 
 

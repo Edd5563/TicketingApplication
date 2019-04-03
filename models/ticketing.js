@@ -8,7 +8,6 @@ const ticketSchema = new Schema({
     companyName: String,
     telephone: String,
     email: String,
-    ticketNum: String,
     status: String,
     subject: String,
     notes: String

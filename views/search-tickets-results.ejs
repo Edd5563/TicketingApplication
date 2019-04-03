@@ -23,17 +23,26 @@
 
           Welcome to searchTickets!!!
 
-    <form method="POST" action="searchTickets">
-        <div class="form-group text-center">
-            <input type="text" class="form-control" placeholder="Find By Ticket Number" name="ticketNum">
-        </div>
-        <button type="submit">Search...</button>
-    </form>
-
-        </div><!-- End Container div -->
-
+        <form method="POST" action="searchTickets">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ticket Number" name="ticketNum">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
 
        
+
+
+<br><br><br><br>
+        <p> Ticket Number:<%= ticketData.ticketNum%></p>
+        <p> Status: <%= ticketData.status%></p>
+        <p> Full Name: <%= ticketData.firstName%> <%= ticketData.lastName%></p>
+        <p>Company Name: <%= ticketData.companyName%></p>
+        <p>Contact Number: <%= ticketData.telephone%></p>
+        <p>Contact Email: <%= ticketData.email%></p>
+        <p>Notes</p>
+        <p><%= ticketData.notes%></p>
+        
 
 
 
@@ -45,7 +54,7 @@
 
         <br><br><br><br>
 
-
+ </div><!-- End Container div -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
