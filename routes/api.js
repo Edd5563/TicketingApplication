@@ -13,8 +13,8 @@ let states = require('../assets/js/states');
 
 //Marked for Deletion
 //Start initiator for ticket number
-//let ticketNumber = new TicketNumber({ ticketNumber: 1001})
-//ticketNumber.save();
+// let ticketNumber = new TicketNumber({ ticketNumber: 1001})
+// ticketNumber.save();
 
 
 
@@ -114,6 +114,13 @@ router.post('/searchTickets', urlencodedParser, function (req, res, next) {
         res.render('search-tickets-results', {ticketData: results})
     }).catch(next);
     
+});
+
+
+router.get('/open-tickets', function(req, res,next) {
+    tickets.find({}).then(function(result) {
+        res.render('open-tickets', {openData: result});
+    });
 });
 
 
