@@ -11,14 +11,9 @@ const TicketNumber = require('../models/ticketnumber')
 
 let states = require('../assets/js/states');
 
-//Marked for Deletion
-//Start initiator for ticket number
-// let ticketNumber = new TicketNumber({ ticketNumber: 1001})
-// ticketNumber.save();
 
 
-
-//------------------------
+//------------------------login
 router.get('/', function (req, res, next) {
     res.render('login');
 });
@@ -26,7 +21,7 @@ router.get('/', function (req, res, next) {
 router.post('/login', urlencodedParser, function (req, res, next) {
     var users = new userGroups(req.body)
     //console.log(users)
-    if (users.userName === 'name' && users.password === "password") {
+    if (users.userName === 'Erivera' && users.password === "Welcome2012") {
         res.render('search');
 
         // console.log(req.url)
@@ -61,9 +56,12 @@ router.get('/ticketForm', function (req, res) {
 
 
 
-router.post('/ticketForm/:id/edit', urlencodedParser, function (req, res, next) {
-    console.log("EDIT TICKET:" +req.params.id )
+router.post('/ticketForm', urlencodedParser, function (req, res, next) {
+    tickets.create(req.body).then(function (ticketData) {
+        res.render('search');// Future this will lead to Open ticket where this ticket will be displayed
+    });
 });
+
 
 
 
@@ -99,11 +97,6 @@ router.post('/search', urlencodedParser, function (req, res, next) {
 router.get('/results', function (req, res, next) {
     res.render('results')
 });
-
-
-
-
-
 
 
 
@@ -157,26 +150,13 @@ router.post('/searchTickets/:id/edit', urlencodedParser, function (req, res, nex
 
 
 
-
-
-
 //---------View all open tickets
 
 router.get('/open-tickets', function(req, res,next) {
-    tickets.find({status:"open"}).then(function(result) {
+    tickets.find({status:"Open"}).then(function(result) {
         res.render('open-tickets', {openData: result});
     });
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
