@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">    
 
 
     <title>Ticketing System</title>
@@ -30,13 +30,12 @@
             <button type="submit">Submit</button>
         </form>
 
-       
 
 
 <br><br><br>
-        <p> Ticket Number:<%= ticketData.ticketNum%></p>
-        <p> Status: <%= ticketData.status%></p>
-        <p> Full Name: <%= ticketData.firstName%> <%= ticketData.lastName%></p>
+        <p>Ticket Number:<%= ticketData.ticketNum%></p>
+        <p>Status: <%= ticketData.status%></p>
+        <p>Full Name: <%= ticketData.firstName%> <%= ticketData.lastName%></p>
         <p>Company Name: <%= ticketData.companyName%></p>
         <p>Contact Number: <%= ticketData.telephone%></p>
         <p>Contact Email: <%= ticketData.email%></p>
@@ -49,7 +48,7 @@
 
         <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Edit Ticket
+    <i class="fas fa-pencil-alt"></i>
   </button>
   
   <!-- Modal -->
@@ -117,15 +116,9 @@
     </div>
   </div>
 
-
-
-
-
-
-
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2">
-    Delete Ticket
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">
+    <i class="fas fa-trash-alt"></i>
   </button>
   
   <!-- Modal -->
@@ -153,9 +146,6 @@
       </div>
     </div>
   </div>
-
-
-
 
  </div><!-- End Container div -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -54,15 +54,11 @@ router.get('/ticketForm', function (req, res) {
 });
 
 
-
-
 router.post('/ticketForm', urlencodedParser, function (req, res, next) {
     tickets.create(req.body).then(function (ticketData) {
         res.render('search');// Future this will lead to Open ticket where this ticket will be displayed
     });
 });
-
-
 
 
 //------------------------Search feature is not set to find. Please rewrite
@@ -117,43 +113,6 @@ router.post('/results/:id/delete', function (req, res, next) {
 
 
 
-//---------Results page
-
-// router.get('/results', function (req, res, next) {
-//     res.render('results')
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //---------Search Tickets page
 
 router.get('/searchTickets', function (req, res, next) {
@@ -201,8 +160,6 @@ router.post('/searchTickets/:id/edit', urlencodedParser, function (req, res, nex
 });
 
 
-
-
 //---------View all open tickets
 
 router.get('/open-tickets', function(req, res,next) {
@@ -210,8 +167,6 @@ router.get('/open-tickets', function(req, res,next) {
         res.render('open-tickets', {openData: result});
     });
 });
-
-
 
 
 // Customer Master List
