@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
     <title>Ticketing System</title>
@@ -34,84 +34,180 @@
             <p><%= data.fName +" "+ data.lName%></p>
             <p><%= data.company%></p>
             <p><%= data.telephone%></p>
-            <p><%= data.email%></p>
+            <p ><%= data.email%></p>
            
             
 
 
 
+<!-- Begin of Create a Ticket modal -->
+    <!-- Button trigger modal ticketform-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            <i class="fas fa-clipboard-list"></i>
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" for="ticketNum">Ticket Creation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="ticketForm" class="">
+                        <div class="form-group ">
+                            <input type="text" class="form-control" value="<%=tickNum.ticketNumber%>" name="ticketNum">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="firstName" value="<%= data.fName%>">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="lastName" value="<%= data.lName%>">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" value="<%= data.company%>" name="companyName" placeholder="No company name">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" value="<%= data.telephone%>" name="telephone">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="email" class="form-control" value="<%= data.email%>" name="email" placeholder="No email registered">
+                        </div>
+                        <br>
+                        <div>
+                            <select class="custom-select" id="inputGroupSelect02" name="status">
+                                <option value="Open">Open</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div><br>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" placeholder="Subject" name="subject">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <textarea class="form-control " name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
+                        </div>
+                    
+                        <button class="btn btn-secondary" type="submit">Enter</button>
+                    </form>
 
-            <!-- Button trigger modal ticketform-->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                Create a Ticket
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle" for="ticketNum">Ticket Creation</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="ticketForm" class="">
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" value="<%=tickNum.ticketNumber%>" name="ticketNum">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" name="firstName" value="<%= data.fName%>">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" name="lastName" value="<%= data.lName%>">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" value="<%= data.company%>" name="companyName">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" value="<%= data.telephone%>" name="telephone">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="email" class="form-control" value="<%= data.email%>" name="email">
-                                </div>
-                                <br>
-                                <div>
-                                    <select class="custom-select" id="inputGroupSelect02" name="status">
-                                       <option value="Open">Open</option>
-                                        <option value="Closed">Closed</option>
-                                    </select>
-                                </div><br>
-                                <br>
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" placeholder="Subject" name="subject">
-                                </div>
-                                <br>
-                                <div class="form-group ">
-                                    <textarea class="form-control " name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
-                                </div>
-                            
-                                <button class="btn btn-secondary" type="submit">Enter</button>
-                            </form>
-
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <!-- Buttons here -->
-                        </div>
-                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <!-- Buttons here -->
                 </div>
             </div>
+        </div>
+    </div>
+<!--End of Create a Ticket modal -->
 
 
 
+
+
+
+
+
+
+<!-- Begin of Edit-->
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2">
+            <i class="fas fa-pencil-alt"></i>
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Customer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                    <form method="POST" action="results/<%=data._id%>/edit" class="">
+                        
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="fName" value="<%= data.fName%>">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="lName" value="<%= data.lName%>">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" value="<%= data.company%>" name="company" placeholder="No company entered">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" value="<%= data.telephone%>" name="telephone">
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <input type="email" class="form-control" value="<%= data.email%>" name="email" placeholder="No email entered">
+                        </div>
+                        <br>
+                   
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="Submit" class="btn btn-primary">Save changes</button>  
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+<!-- End of Edit-->
+
+
+
+
+
+
+
+
+<!-- Begin of Delete-->
+<!-- Button trigger modal -->
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal3">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Customer Deletion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Confirm Deletion of... 
+              <p><%= data.fName%> <%= data.lName%></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <form method="POST" action="results/<%=data._id%>/delete" >
+                <button type="Submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End of Delete-->
 
 
 

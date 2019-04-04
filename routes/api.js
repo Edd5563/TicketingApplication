@@ -9,7 +9,7 @@ const tickets = require('../models/ticketing')
 const searchs = require('../models/search')
 const TicketNumber = require('../models/ticketnumber')
 
-let states = require('../assets/js/states');
+
 
 
 
@@ -34,7 +34,7 @@ router.post('/login', urlencodedParser, function (req, res, next) {
 // passing states array to customerReg to avoid
 // making such a hude options list.
 router.get('/customerReg', function (req, res) {
-    res.render('customerReg', { states: states });
+    res.render('customerReg');
 });
 
 router.post('/customerReg', urlencodedParser, function (req, res, next) {
@@ -91,12 +91,65 @@ router.post('/search', urlencodedParser, function (req, res, next) {
 
 });
 
+//Updating customers at custregs
+router.post('/results/:id/edit', urlencodedParser, function (req, res, next) {
+    // console.log(req.params.id)
+    // console.log(req.body)
+    custRegs.findOneAndUpdate({ _id: req.params.id},
+        {
+            "fName": req.body.fName,
+            "lName": req.body.lName,
+            "company": req.body.company,
+            "telephone": req.body.telephone,
+            "email": req.body.email
+        }).then(function(){
+            res.render('customerReg');
+        }).catch(next);
+});
+
+
+//Deleting Customers from the custregs
+router.post('/results/:id/delete', function (req, res, next) {
+    custRegs.deleteOne({ "_id": req.params.id}).then(function() {
+        res.render('customerReg')
+    });
+});
+
+
 
 //---------Results page
 
-router.get('/results', function (req, res, next) {
-    res.render('results')
-});
+// router.get('/results', function (req, res, next) {
+//     res.render('results')
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,6 +210,20 @@ router.get('/open-tickets', function(req, res,next) {
         res.render('open-tickets', {openData: result});
     });
 });
+
+
+
+
+// Customer Master List
+router.get('/customer-master-list', function(req, res, next) {
+    custRegs.find().then(function(results) {
+        res.render('customer-master-list', {custData: results});    
+    }).catch(next);
+    
+});
+
+
+
 
 
 

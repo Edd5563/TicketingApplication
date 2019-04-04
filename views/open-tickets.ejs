@@ -30,11 +30,11 @@
     <div class="card col-md-5 offset-md-4" style="width: 25rem;">
         <div class="card-body col align-self-center">
           <h5 class="card-title">Ticket Number: <%=openData[i].ticketNum%></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><strong><%= openData[i].subject%></strong></h6>
           <h6 class="card-subtitle mb-2 text-muted">Status: <%= openData[i].status%></h6>
           <h6 class="card-subtitle mb-2 text-muted">Name: <%= openData[i].firstName%> <%= openData[i].lastName%></h6>
           <h6 class="card-subtitle mb-2 text-muted">Company: <%= openData[i].companyName%></h6>
-          <h6 class="card-subtitle mb-2 text-muted">Contact#: <%= openData[i].telephone%></h6>
-          <h6 class="card-subtitle mb-2 text-muted">Email: <%= openData[i].email%></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Contact info: <%= openData[i].telephone%>  <%= openData[i].email%></h6>
           <p class="card-text"><%= openData[i].notes%></p>
         </div>
       </div>

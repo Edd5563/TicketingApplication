@@ -15,10 +15,7 @@ const RegCustomerSchema = new Schema({
 		required: [true, 'Telephone name is required']
 	},
 	company: String,
-	email: {
-		type: String,
-		required: [true, 'Email name is required']
-	},
+	email: String,
 });
 
 const CustRegs = mongoose.model('custregs', RegCustomerSchema);
