@@ -40,7 +40,8 @@
         <p>Company Name: <%= ticketData.companyName%></p>
         <p>Contact Number: <%= ticketData.telephone%></p>
         <p>Contact Email: <%= ticketData.email%></p>
-        <p>Notes</p>
+        <p>Subject: <%= ticketData.subject%></p>
+        <h5>Notes</h5>
         <p><%= ticketData.notes%></p>
         
 
@@ -62,7 +63,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form method="POST" action="ticketForm" class="">
+            <form method="POST" action="searchTickets/<%=ticketData.ticketNum%>/edit" class="">
                 <div class="form-group ">
                     <input type="text" class="form-control" value="<%=ticketData.ticketNum%>" name="ticketNum">
                 </div>
@@ -95,10 +96,10 @@
                         <option value="Closed">Closed</option>
                     </select>
                 </div><br>
-                <!-- <br>
+                <br>
                 <div class="form-group ">
-                    <input type="text" class="form-control" placeholder="Subject" name="subject">
-                </div> -->
+                    <input type="text" class="form-control" value="<%= ticketData.subject%>" name="subject">
+                </div>
                 <br>
                 <div class="form-group ">
                     <textarea class="form-control " name="notes"  cols="30" rows="10"><%= ticketData.notes%></textarea>

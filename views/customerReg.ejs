@@ -39,26 +39,11 @@
 
         <div class="form-group col-md-6">
             <label for="company">  </label>
-            <input type="text" name="company" class="form-control" placeholder="Company Name">
+            <input type="text" name="company" class="form-control" placeholder="Company Name (Not Required)">
         </div>
 
         
         </div><!-- end of form-row -->
-
-
-
-        <div class="form-group">
-            <label for="address"> </label>
-            <input type="text" name="address" class="form-control" placeholder="1234 Main St">  
-        </div>
-        
-
-        <div class="form-group">
-            <label for="addressTwo">  </label>
-            <input type="text" name="addressTwo" class="form-control" placeholder="Suite 2">
-        </div>
-        
-        
 
 
     <!-- new form row -->
@@ -75,29 +60,6 @@
         </div>
 
         </div><!-- end of second form-row -->
-
-
-        
-        <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="city"></label>
-            <input type="text" class="form-control" id="" name="city" placeholder="City">
-        </div>
-        
-        <div class="form-group col-md-4">
-            <label for="state"></label>
-            <select id="" class="form-control" name="state">
-                <option selected>Choose State...</option>
-                <% for (let i = 0; i < states.length; i++) { %>
-                <option><%= states[i]%></option>
-                <% } %>
-            </select>
-        </div>
-        
-        <div class="form-group col-md-2">
-            <label for="zip"></label>
-            <input type="text" class="form-control" id="" name="zip" placeholder="Zip code">
-        </div>
 
         
         <input type="Submit" value="Sumbit" class="btn btn-primary">

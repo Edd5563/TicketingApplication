@@ -44,10 +44,10 @@ router.get('/customerReg', function (req, res) {
 
 router.post('/customerReg', urlencodedParser, function (req, res, next) {
     let customer = new custRegs(req.body)
-    console.log(customer)
-    res.render('customerReg', { states: states });
+    //console.log(customer)
+    // res.render('customerReg', { states: states });Marked for deletion
     custRegs.create(req.body).then(function(customer){
-        res.send(customer)
+        res.render('customerReg')
     }).catch(next);
 });
 
@@ -59,13 +59,13 @@ router.get('/ticketForm', function (req, res) {
 });
 
 
-router.post('/ticketForm', urlencodedParser, function (req, res, next) {
-    tickets.create(req.body).then(function(ticketData){
-        res.render('search');// Future this will lead to Open ticket where this ticket will be displayed
-    });
 
-   
+
+router.post('/ticketForm/:id/edit', urlencodedParser, function (req, res, next) {
+    console.log("EDIT TICKET:" +req.params.id )
 });
+
+
 
 //------------------------Search feature is not set to find. Please rewrite
 
@@ -135,7 +135,24 @@ router.post('/searchTickets/:id/delete', function (req, res, next) {
 });
 
 
-
+//Updating tickets
+router.post('/searchTickets/:id/edit', urlencodedParser, function (req, res, next) {
+    // console.log(req.params.id)
+    // console.log(req.body)
+    tickets.findOneAndUpdate({ ticketNum: req.params.id},
+        {
+            "firstName": req.body.firstName,
+            "lastName": req.body.lastName,
+            "companyName": req.body.companyName,
+            "telephone": req.body.telephone,
+            "email": req.body.email,
+            "status": req.body.status,
+            "subject": req.body.subject,
+            "notes": req.body.notes
+        }).then(function(){
+            res.render('search');
+        });
+});
 
 
 
@@ -146,7 +163,7 @@ router.post('/searchTickets/:id/delete', function (req, res, next) {
 //---------View all open tickets
 
 router.get('/open-tickets', function(req, res,next) {
-    tickets.find({}).then(function(result) {
+    tickets.find({status:"open"}).then(function(result) {
         res.render('open-tickets', {openData: result});
     });
 });
