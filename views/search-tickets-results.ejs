@@ -138,13 +138,16 @@
           </button>
         </div>
         <div class="modal-body">
-          You wish to delete 
+          Confirm Deletion of... 
           <p> Ticket Number: <%= ticketData.ticketNum%></p>
           <p> For customer: <%= ticketData.firstName%> <%= ticketData.lastName%></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <form method="POST" action="searchTickets/<%=ticketData.ticketNum%>/delete" >
+            <!-- <input type="text" name="ticketNum" value="<%= ticketData.ticketNum%>"> -->
+            <button type="Submit" class="btn btn-danger">Delete</button>
+          </form>
         </div>
       </div>
     </div>
@@ -169,6 +172,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+            <script>
+              
+            </script>
         <!-- Footer Section -->
         <footer class="text-center footer">
             <hr>

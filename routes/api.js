@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
 router.post('/login', urlencodedParser, function (req, res, next) {
     var users = new userGroups(req.body)
     //console.log(users)
-    if (users.userName === 'username' && users.password === "passeord") {
+    if (users.userName === 'name' && users.password === "password") {
         res.render('search');
 
         // console.log(req.url)
@@ -102,6 +102,12 @@ router.get('/results', function (req, res, next) {
 
 
 
+
+
+
+
+
+
 //---------Search Tickets page
 
 router.get('/searchTickets', function (req, res, next) {
@@ -111,17 +117,47 @@ router.get('/searchTickets', function (req, res, next) {
 router.post('/searchTickets', urlencodedParser, function (req, res, next) {
     let search_ticket_results = new tickets(req.body);
     tickets.findOne({ ticketNum: search_ticket_results.ticketNum}).then(function(results) {
-        res.render('search-tickets-results', {ticketData: results})
+        if (results === null) {
+            res.render('search-tickets')
+        } else {
+            res.render('search-tickets-results', { ticketData: results })
+        }
+        
     }).catch(next);
     
 });
 
+//Deleting tickets from the search tickets
+router.post('/searchTickets/:id/delete', function (req, res, next) {
+    tickets.deleteOne({ "ticketNum": req.params.id}).then(function() {
+        res.render('search-tickets')
+    });
+});
+
+
+
+
+
+
+
+
+
+
+//---------View all open tickets
 
 router.get('/open-tickets', function(req, res,next) {
     tickets.find({}).then(function(result) {
         res.render('open-tickets', {openData: result});
     });
 });
+
+
+
+
+
+
+
+
 
 
 
