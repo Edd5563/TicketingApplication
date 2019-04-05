@@ -1,8 +1,8 @@
-# MessengerApp2
-Remodeling messenger app with backend functionality
+#TicketingApplication
+Remodeling an old messenger application I created Months ago. 
+This time its a node.js based application with restfulApi/Crud 
+functionality and a personalized gui.
 
-Final steps to completion
+Currently being tested at my job for weaknesses and user feedback
 
---A page to help Search for customers by Name, Telephone number, or Company name.
-
---A way to Edit customers.
+Once testing is over, I will implient further changes and additional features.
