@@ -99,12 +99,11 @@ router.post('/search', urlencodedParser, function (req, res, next) {
                 }
             }).catch(next);
         } else if (searchType === "lName"){//Searching by last name
+            let ticket_number = TicketNumber.updateOne({}, { $inc: { ticketNumber: +1 } }).then(function (ticketNumber) { return ticketNumber}).catch(next);
             custRegs.findOne({ lName: searchResults.search }).then(function (l_name_search) {
                 if (l_name_search) {
                     TicketNumber.findOne({}).then(function (ticket_number) {
-                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
                             res.render('single-results', { data: l_name_search, tickNum: ticket_number})  
-                        }).catch(next);
                     }).catch(next);
                 } else {
                     res.redirect('back');
@@ -112,12 +111,11 @@ router.post('/search', urlencodedParser, function (req, res, next) {
 
             }).catch(next);
         } else { // Searching by Telephone number
+            let ticket_number = TicketNumber.updateOne({}, { $inc: { ticketNumber: +1 } }).then(function (ticketNumber) { return ticketNumber}).catch(next);
             custRegs.findOne({ telephone: searchResults.search }).then(function (telephone_search) {
                 if (telephone_search) {
                     TicketNumber.findOne({}).then(function (ticket_number) {
-                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
-                            res.render('single-results', { data: telephone_search, tickNum: ticket_number})  
-                        }).catch(next);
+                            res.render('single-results', { data: telephone_search, tickNum: ticket_number})
                     }).catch(next);
                 } else {
                     res.redirect('back');
