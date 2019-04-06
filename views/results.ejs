@@ -26,19 +26,21 @@
 
 
     <br><br><br>
-            
+             
             <% for (let i = 0; i < data.length; i++) { %>
-            <div class="card col-md-5 offset-md-4 text-left" style="width: 25rem;">
-                <div class="card-body col align-self-center">
-                    <h5 class="card-title">Name: <%= data[i].fName%> <%= data[i].lName%></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Company: <%= data[i].company%></h6>
-                    <h6 class="card-subtitle mb-2 text-muted">Telephone#: <%= data[i].telephone%> <%= data[i].email%></h6>
-                    <h6 class="card-subtitle mb-2 text-muted">Email: <%= data[i].email%></h6>            
+           
+                <div class="card col-md-5 offset-md-4 text-left" style="width: 25rem;">
+                    <div class="card-body col align-self-center">
+                        <h5 class="card-title">Name: <%= data[i].fName%> <%= data[i].lName%></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Company: <%= data[i].company%></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Telephone#: <%= data[i].telephone%> <%= data[i].email%></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Email: <%= data[i].email%></h6>            
+                    </div>
                 </div>
-            </div>
-            <br><br>
+            
             <% } %>
-
+             
+            <br><br>
 
 
 

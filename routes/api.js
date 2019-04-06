@@ -88,12 +88,11 @@ router.post('/search', urlencodedParser, function (req, res, next) {
             }
         }).catch(next);
             }  else if (searchType === "fName") { // searching by first name
+                let ticket_number = TicketNumber.updateOne({}, { $inc: { ticketNumber: +1 } }).then(function (ticketNumber) { return ticketNumber}).catch(next);
             custRegs.findOne({ fName: searchResults.search }).then(function (f_name_search) {
                 if (f_name_search) {
-                    TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
-                        TicketNumber.findOne({}).then(function (ticket_number) {
-                            res.render('single-results', { data: f_name_search, tickNum: ticket_number})  
-                        }).catch(next);
+                    TicketNumber.findOne({}).then(function (ticket_number) {
+                        res.render('single-results', { data: f_name_search, tickNum: ticket_number})  
                     }).catch(next);
                 } else {
                     res.redirect('back');

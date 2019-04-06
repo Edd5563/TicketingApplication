@@ -21,14 +21,14 @@
         <div class="container text-center">
 
 
-<br><br><br><br><br>
+<br><br>
             
 
 <% for (let i = 0; i < openData.length; i++) { %>
     
+    <div class="card-group">  <div class="card-deck"> </div>  
 
-
-    <div class="card col-md-5 offset-md-4 text-left" style="width: 25rem;">
+    <div class="card col-md-6 offset-md-3 text-left" style="width: 25rem;">
         <div class="card-body col align-self-center">
                                                         
         <form class="text-right" method="POST" action="open-tickets/<%=openData[i]._id%>/delete">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <br><br>
-
+    </div> 
 
     <% } %>
 
