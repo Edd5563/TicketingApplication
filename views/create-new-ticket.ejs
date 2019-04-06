@@ -19,11 +19,7 @@
         <br><br>
         <div class="container text-center">
 
-<br><br><br><br><br>
-        <% include partials/search.ejs %>
-
-    <br><br><br>
-          
+<br><br>
             
             
     
@@ -38,9 +34,9 @@
     <br><br>
             
 
-    <form method="POST" action="ticketForm" class="">
+    <form method="POST" action="ticketForm" class="col-md-4 offset-md-4">
         <div class="form-group ">
-            <input type="text" class="form-control" value="<%=tickNum.ticketNumber%>" name="ticketNum">
+            <input type="text" class="form-control" value="<%=ticketNum.ticketNumber%>" name="ticketNum">
         </div>
         <br>
         <div class="form-group ">

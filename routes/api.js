@@ -39,20 +39,14 @@ router.get('/customerReg', function (req, res) {
 });
 
 router.post('/customerReg', urlencodedParser, function (req, res, next) {
-    let customer = new custRegs(req.body)
-    //console.log(customer)
-    // res.render('customerReg', { states: states });Marked for deletion
-    custRegs.create(req.body).then(function(customer){
-        res.render('customerReg')
+    let ticket_number = TicketNumber.updateOne({}, { $inc: { ticketNumber: +1 } }).then(function (ticketNumber) { return ticketNumber}).catch(next);
+    custRegs.create(req.body).then(function(reg_customer){
+        TicketNumber.findOne({}).then(function (ticket_number) {
+            res.render('create-new-ticket',{data:reg_customer, ticketNum:ticket_number})
+        }).catch(next);
     }).catch(next);
 });
 
-
-//-----------ticketForm
-router.get('/ticketForm', function (req, res) {
-    res.render('ticketForm');
-    // Marked for Deletion
-});
 
 
 router.post('/ticketForm', urlencodedParser, function (req, res, next) {

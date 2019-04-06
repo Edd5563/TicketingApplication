@@ -59,89 +59,14 @@
         <input type="text" name="email" class="form-control" placeholder="Email">
         </div>
 
-        </div><!-- end of second form-row -->
-
-        
-        <input type="Submit" value="Sumbit" class="btn btn-primary">
-        <!-- <button type="button" class="btn btn-secondary" onClick="location.href='/api/ticketForm'" >Create New Ticket</button> -->
-
-
+        </div><!-- end of second form-row --> 
+        <input type="Submit" value="Save & Create" class="btn btn-info">
     </form>
 
 
-<!-- Begin of Create a Ticket modal -->
-    <!-- Button trigger modal ticketform-->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-            <i class="fas fa-clipboard-list"></i>
-    </button>
     
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" for="ticketNum">Ticket Creation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="ticketForm" class="">
-                        <div class="form-group ">
-                            <input type="text" class="form-control" value="<%=tickNum.ticketNumber%>" name="ticketNum">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <input type="text" class="form-control" name="firstName" value="<%= data.fName%>">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <input type="text" class="form-control" name="lastName" value="<%= data.lName%>">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <input type="text" class="form-control" value="<%= data.company%>" name="companyName" placeholder="No company name">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <input type="text" class="form-control" value="<%= data.telephone%>" name="telephone">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <input type="email" class="form-control" value="<%= data.email%>" name="email" placeholder="No email registered">
-                        </div>
-                        <br>
-                        <div>
-                            <select class="custom-select" id="inputGroupSelect02" name="status">
-                                <option value="Open">Open</option>
-                                <option value="Closed">Closed</option>
-                            </select>
-                        </div><br>
-                        <br>
-                        <div class="form-group ">
-                            <input type="text" class="form-control" placeholder="Subject" name="subject">
-                        </div>
-                        <br>
-                        <div class="form-group ">
-                            <textarea class="form-control " name="notes" placeholder="Notes" cols="30" rows="10"></textarea>
-                        </div>
-                    
-                        <button class="btn btn-secondary" type="submit">Enter</button>
-                    </form>
-                    
-                    
-                </div>
-                <div class="modal-footer">
-                    <!-- Buttons here -->
-                </div>
-            </div>
-        </div>
-    </div>
-<!--End of Create a Ticket modal -->
 
-
-
+     
 
 
 
