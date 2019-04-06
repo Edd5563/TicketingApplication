@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 let bodyParser = require('body-parser');
+const url = require('url');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const custRegs = require('../models/regCustomers')
@@ -61,7 +62,9 @@ router.post('/ticketForm', urlencodedParser, function (req, res, next) {
 });
 
 
-//------------------------Search feature is not set to find. Please rewrite
+//Search feature... i had a bit of trouble with this one.
+//Its very bulky, but this fix is needed asap so i will work on a 
+//cleaner coode another time.
 
 router.get('/search', function (req, res, next) {
     res.render('search')
@@ -69,21 +72,71 @@ router.get('/search', function (req, res, next) {
 
 router.post('/search', urlencodedParser, function (req, res, next) {
     let searchResults = new searchs(req.body);
+    let searchType = req.body.searchBy
     
-    
-    // console.log(searchResults.search);
-    TicketNumber.updateOne({},{ $inc: { ticketNumber: +1 } }).then(function() {
-        TicketNumber.findOne({}).then(function(ticketResults) {
-            custRegs.findOne({ fName: searchResults.search }).then(function (custSearch) {
-                if (custSearch === null) {
-                    res.render('search')
-                } else {
-                    res.render('results', { data: custSearch, tickNum: ticketResults })
-                }
-        });
-     }).catch(next);    
 
-    }).catch(next);
+    if (searchType === "all") {
+        custRegs.find({}).then(function (searchAll) {
+            if (searchAll) {
+                // console.log(searchAll)
+                custRegs.find({}).then(function(findAll_customers) {
+                    TicketNumber.findOne({}).then(function (ticket_number) {
+                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
+                            res.render('results', { data: findAll_customers, tickNum: ticket_number})  
+                        }).catch(next);
+                    }).catch(next);
+                }).catch(next);
+            } else {
+                console.log("Nothing Found")
+                res.redirect('back');
+            }
+        }).catch(next);
+
+
+
+// Note for myself: This is where i am trying to make a single way to search via
+// first, last, telephone, or all
+// It looks like i may need to make a new view for the ALL search only because 
+// of the Limitations on EJS / Templates in general :(
+
+
+
+
+    }  else if (searchType === "fName") {
+        custRegs.findOne({ fName: searchResults.search }).then(function (f_name_search) {
+            if (f_name_search) {
+                console.log(f_name_search)
+                res.redirect('back');
+            } else {
+                console.log("Not Found")
+                res.redirect('back');
+            }
+
+         }).catch(next);
+    } else if (searchType === "lName"){
+        custRegs.findOne({ lName: searchResults.search }).then(function (l_name_search) {
+            if (l_name_search) {
+                console.log(l_name_search)
+                res.redirect('back');
+            } else {
+                console.log("Not Found")
+                res.redirect('back');
+            }
+
+        }).catch(next);
+    } else {
+        custRegs.findOne({ telephone: searchResults.search }).then(function (l_name_search) {
+            if (l_name_search) {
+                console.log(l_name_search)
+                res.redirect('back');
+            } else {
+                console.log("Not Found")
+                res.redirect('back');
+            }
+
+        }).catch(next);
+    }
+
 
 });
 
@@ -167,6 +220,31 @@ router.get('/open-tickets', function(req, res,next) {
         res.render('open-tickets', {openData: result});
     });
 });
+
+//In open-tickets the ability to edit and delete
+router.post('/open-tickets/:id/edit', function(req, res, next) {
+ //issues with url routing
+});
+
+
+//Delete the ticket of the open tiocket list
+router.post('/open-tickets/:id/delete', function (req, res, next) {
+    tickets.deleteOne({ "_id": req.params.id }).then(function () {
+        tickets.find({ status: "Open" }).then(function (result) {
+            res.redirect('back');
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
 
 
 // Customer Master List
