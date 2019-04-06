@@ -20,7 +20,7 @@ app.use(function(err, req, res, next){
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect('mongodb://localhost/usersDB', { useNewUrlParser: true })
+mongoose.connect('mongodb://devtester:4devuse@ds061365.mlab.com:61365/heroku_sfr6qnmd', { useNewUrlParser: true })
 mongoose.connection.once('once', function () {
     console.log('Connection has been Established')
 
