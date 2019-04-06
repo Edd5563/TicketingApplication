@@ -76,69 +76,59 @@ router.post('/search', urlencodedParser, function (req, res, next) {
     
 
     if (searchType === "all") {
-        custRegs.find({}).then(function (searchAll) {
+        custRegs.find({}).then(function (searchAll) { //all search
             if (searchAll) {
                 // console.log(searchAll)
                 custRegs.find({}).then(function(findAll_customers) {
-                    TicketNumber.findOne({}).then(function (ticket_number) {
-                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
-                            res.render('results', { data: findAll_customers, tickNum: ticket_number})  
-                        }).catch(next);
-                    }).catch(next);
+                            res.render('results', { data: findAll_customers});
                 }).catch(next);
             } else {
                 console.log("Nothing Found")
                 res.redirect('back');
             }
         }).catch(next);
+            }  else if (searchType === "fName") { // searching by first name
+            custRegs.findOne({ fName: searchResults.search }).then(function (f_name_search) {
+                if (f_name_search) {
+                    TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
+                        TicketNumber.findOne({}).then(function (ticket_number) {
+                            res.render('single-results', { data: f_name_search, tickNum: ticket_number})  
+                        }).catch(next);
+                    }).catch(next);
+                } else {
+                    res.redirect('back');
+                }
+            }).catch(next);
+        } else if (searchType === "lName"){//Searching by last name
+            custRegs.findOne({ lName: searchResults.search }).then(function (l_name_search) {
+                if (l_name_search) {
+                    TicketNumber.findOne({}).then(function (ticket_number) {
+                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
+                            res.render('single-results', { data: l_name_search, tickNum: ticket_number})  
+                        }).catch(next);
+                    }).catch(next);
+                } else {
+                    res.redirect('back');
+                }
+
+            }).catch(next);
+        } else { // Searching by Telephone number
+            custRegs.findOne({ telephone: searchResults.search }).then(function (telephone_search) {
+                if (telephone_search) {
+                    TicketNumber.findOne({}).then(function (ticket_number) {
+                        TicketNumber.updateOne({}, { $inc: { ticket_number: +1 } }).then(function () {
+                            res.render('single-results', { data: telephone_search, tickNum: ticket_number})  
+                        }).catch(next);
+                    }).catch(next);
+                } else {
+                    res.redirect('back');
+                }
+
+            }).catch(next);
+        }
 
 
-
-// Note for myself: This is where i am trying to make a single way to search via
-// first, last, telephone, or all
-// It looks like i may need to make a new view for the ALL search only because 
-// of the Limitations on EJS / Templates in general :(
-
-
-
-
-    }  else if (searchType === "fName") {
-        custRegs.findOne({ fName: searchResults.search }).then(function (f_name_search) {
-            if (f_name_search) {
-                console.log(f_name_search)
-                res.redirect('back');
-            } else {
-                console.log("Not Found")
-                res.redirect('back');
-            }
-
-         }).catch(next);
-    } else if (searchType === "lName"){
-        custRegs.findOne({ lName: searchResults.search }).then(function (l_name_search) {
-            if (l_name_search) {
-                console.log(l_name_search)
-                res.redirect('back');
-            } else {
-                console.log("Not Found")
-                res.redirect('back');
-            }
-
-        }).catch(next);
-    } else {
-        custRegs.findOne({ telephone: searchResults.search }).then(function (l_name_search) {
-            if (l_name_search) {
-                console.log(l_name_search)
-                res.redirect('back');
-            } else {
-                console.log("Not Found")
-                res.redirect('back');
-            }
-
-        }).catch(next);
-    }
-
-
-});
+    });
 
 //Updating customers at custregs
 router.post('/results/:id/edit', urlencodedParser, function (req, res, next) {
