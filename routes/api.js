@@ -56,9 +56,6 @@ router.post('/ticketForm', urlencodedParser, function (req, res, next) {
 });
 
 
-//Search feature... i had a bit of trouble with this one.
-//Its very bulky, but this fix is needed asap so i will work on a 
-//cleaner coode another time.
 
 router.get('/search', function (req, res, next) {
     res.render('search')

@@ -10,10 +10,6 @@ Once testing is over, I will implient further changes and additional features.
 
 
 Future Updates
---A feature to help filter searchs for customers by first & last name, telephone#, or a way to pull up All contacts. (Completed)
-
---When creating a new client, Option to either save or create ticket.()
-
 -- A user profile area.(Debating this feature).
 
 --A modal at the botton for feed back and bug reporting.
