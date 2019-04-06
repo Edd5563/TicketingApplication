@@ -15,3 +15,5 @@ Future Updates
 --When creating a new client, I want there to be a option to either save or create ticket, where it takes you directly to create a ticket.()
 
 -- A user profile area.(Debating this feature).
+
+--A modal at the botton for feed back and bug reporting.

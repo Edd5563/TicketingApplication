@@ -79,7 +79,7 @@ router.post('/search', urlencodedParser, function (req, res, next) {
         custRegs.find({}).then(function (searchAll) { //all search
             if (searchAll) {
                 // console.log(searchAll)
-                custRegs.find({}).then(function(findAll_customers) {
+                custRegs.find({}).sort({"fName": 1}).then(function(findAll_customers) {
                             res.render('results', { data: findAll_customers});
                 }).catch(next);
             } else {

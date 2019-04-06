@@ -20,38 +20,7 @@
         <div class="container text-center">
 
 <br><br><br><br><br>
-
-
-         
-
-
-
-        <form method="POST" action="search">
-
-            <div class="row">
-                <div class="col-12 col-md-8">
-                    <div class="form-group text-center">
-                        <input type="text" class="form-control" placeholder="Enter first name to search" name="search">
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4">
-                    <select class="custom-select" id="inputGroupSelect02" name="searchBy">
-                        <option value="fName">First Name</option>
-                        <option value="lName">Last Name</option>
-                        <option value="telephone">Telephone</option>
-                        <option value="all">All</option>
-                    </select>
-                </div>
-            </div>
-
-      
-        <div class="input-group mb-3">
-        
-        </div>
-        <!-- <button type="submit">Search...</button> -->
-        
-        </form>
+        <% include partials/search.ejs %>
 
         </div><!-- End Container div -->
 
