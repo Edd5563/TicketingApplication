@@ -130,7 +130,7 @@ router.post('/results/:id/edit', urlencodedParser, function (req, res, next) {
             "telephone": req.body.telephone,
             "email": req.body.email
         }).then(function(){
-            res.render('customerReg');
+            res.redirect('back');
         }).catch(next);
 });
 
@@ -138,7 +138,7 @@ router.post('/results/:id/edit', urlencodedParser, function (req, res, next) {
 //Deleting Customers from the custregs
 router.post('/results/:id/delete', function (req, res, next) {
     custRegs.deleteOne({ "_id": req.params.id}).then(function() {
-        res.render('customerReg')
+        res.redirect('back')
     });
 });
 
