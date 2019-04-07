@@ -13,6 +13,8 @@ const TicketNumber = require('../models/ticketnumber')
 
 
 
+TicketNumber.create({"ticketNumber":1001}).then(function() {}).catch(next);
+
 
 //------------------------login
 router.get('/', function (req, res, next) {
@@ -41,8 +43,8 @@ router.get('/customerReg', function (req, res) {
 router.post('/customerReg', urlencodedParser, function (req, res, next) {
     let ticket_number = TicketNumber.updateOne({}, { $inc: { ticketNumber: +1 } }).then(function (ticketNumber) { return ticketNumber}).catch(next);
     custRegs.create(req.body).then(function(reg_customer){
-        TicketNumber.findOne({}).then(function (ticket_number) {
-            res.render('create-new-ticket',{data:reg_customer, ticketNum:ticket_number})
+        TicketNumber.findOne({}).then(function (found_ticket_number) {
+            res.render('create-new-ticket', { data: reg_customer, ticketNum: found_ticket_number})
         }).catch(next);
     }).catch(next);
 });
