@@ -15,7 +15,7 @@ const TicketNumber = require('../models/ticketnumber')
 
 
 //------------------------login
-router.get('/', function (req, res, next) {
+router.get('*', function (req, res, next) {
     res.render('login');
 });
 
