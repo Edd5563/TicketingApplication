@@ -12,10 +12,6 @@ const TicketNumber = require('../models/ticketnumber')
 
 
 
-
-TicketNumber.create({"ticketNumber":1001}).then(function() {}).catch(next);
-
-
 //------------------------login
 router.get('/', function (req, res, next) {
     res.render('login');
