@@ -21,7 +21,7 @@ router.post('/login', urlencodedParser, function (req, res, next) {
     var users = new userGroups(req.body)
     //console.log(users)
     if (users.userName === 'Erivera' && users.password === "Welcome2012") {
-        res.render('search');
+        res.redirect('search');
 
         // console.log(req.url)
     } else {

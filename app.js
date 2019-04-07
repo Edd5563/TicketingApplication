@@ -20,9 +20,8 @@ app.use(function (err, req, res, next) {
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect('mongodb://localhost/usersDB', { useNewUrlParser: true })
-
-//mongoose.connect('mongodb://devtester:4devuse@ds229552.mlab.com:29552/heroku_zbxxvn5c', { useNewUrlParser: true })
+//mongoose.connect('mongodb://localhost/usersDB', { useNewUrlParser: true })
+mongoose.connect('mongodb://devtester:4devuse@ds229552.mlab.com:29552/heroku_zbxxvn5c', { useNewUrlParser: true })
 mongoose.connection.once('once', function () {
     console.log('Connection has been Established')
 
