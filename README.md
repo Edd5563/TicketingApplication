@@ -13,3 +13,9 @@ Future Updates
 -- A user profile area.(Debating this feature).
 
 --A modal at the botton for feed back and bug reporting.
+
+--Open ticket maybe be phased out to just have search ticket for Single/All/Open
+
+--Try a tabled view instead of div'ed.
+
+--Spice up the login page....very boring
